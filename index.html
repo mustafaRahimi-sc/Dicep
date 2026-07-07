@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pulse — Life Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%234DD9C2%22/><path d=%22M4 13h3l2 6 4-14 2 8h5%22 stroke=%22%230E1015%22 stroke-width=%222%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 13h4l2 7 4-15 2 8h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand-name">Pulse</span>
+    </div>
+
+    <nav class="nav" id="mainNav">
+      <button class="nav-item is-active" data-section="dashboard" title="Dashboard">
+        <svg viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button class="nav-item" data-section="habits" title="Habits">
+        <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9" fill="none" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Habits</span>
+      </button>
+      <button class="nav-item" data-section="checklist" title="Checklist">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M9 6h11M9 12h11M9 18h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><rect x="3" y="4" width="4" height="4" rx="1"/><rect x="3" y="10" width="4" height="4" rx="1"/><rect x="3" y="16" width="4" height="4" rx="1"/></svg>
+        <span>Checklist</span>
+      </button>
+      <button class="nav-item" data-section="calendar" title="Calendar">
+        <svg viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="4.5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+        <span>Calendar</span>
+      </button>
+      <button class="nav-item" data-section="mood" title="Mood">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 14c1 1.3 2.4 2 4 2s3-.7 4-2"/><path d="M8.5 9.5h.01M15.5 9.5h.01"/></svg>
+        <span>Mood</span>
+      </button>
+      <button class="nav-item" data-section="wellness" title="Wellness">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3s6.5 7.1 6.5 11.5a6.5 6.5 0 0 1-13 0C5.5 10.1 12 3 12 3z"/></svg>
+        <span>Wellness</span>
+      </button>
+      <button class="nav-item" data-section="pomodoro" title="Pomodoro">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9.5 2h5M12 2v2"/></svg>
+        <span>Pomodoro</span>
+      </button>
+      <button class="nav-item" data-section="notes" title="Notes">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M8 13h8M8 17h5"/></svg>
+        <span>Notes</span>
+      </button>
+      <button class="nav-item" data-section="journal" title="Journal">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16.5a1.5 1.5 0 0 1-1.5 1.5H6.5A2.5 2.5 0 0 1 4 18.5v-13z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/></svg>
+        <span>Journal</span>
+      </button>
+      <button class="nav-item" data-section="goals" title="Goals">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+        <span>Goals</span>
+      </button>
+      <button class="nav-item" data-section="stats" title="Statistics">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+        <span>Statistics</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <span id="themeLabel">Dark mode</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Mobile bottom nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mnav-item is-active" data-section="dashboard"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></button>
+    <button class="mnav-item" data-section="habits"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9" fill="none" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="mnav-item" data-section="checklist"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 6h11M9 12h11M9 18h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><rect x="3" y="4" width="4" height="4" rx="1"/><rect x="3" y="10" width="4" height="4" rx="1"/><rect x="3" y="16" width="4" height="4" rx="1"/></svg></button>
+    <button class="mnav-item" data-section="calendar"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="4.5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
+    <button class="mnav-item" data-section="more"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button>
+  </nav>
+
+  <!-- Mobile "more" sheet -->
+  <div class="more-sheet" id="moreSheet">
+    <div class="more-sheet-inner">
+      <button class="more-item" data-section="mood">Mood</button>
+      <button class="more-item" data-section="wellness">Wellness</button>
+      <button class="more-item" data-section="pomodoro">Pomodoro</button>
+      <button class="more-item" data-section="notes">Notes</button>
+      <button class="more-item" data-section="journal">Journal</button>
+      <button class="more-item" data-section="goals">Goals</button>
+      <button class="more-item" data-section="stats">Statistics</button>
+      <button class="more-item" id="moreThemeToggle">Toggle theme</button>
+      <button class="more-close" id="moreClose">Close</button>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1 id="pageTitle">Dashboard</h1>
+        <p id="pageSubtitle" class="muted"></p>
+      </div>
+      <div class="topbar-actions">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search notes, journal, goals, habits…" autocomplete="off">
+        </div>
+      </div>
+    </header>
+
+    <div class="content" id="content">
+
+      <!-- Search results -->
+      <section class="view" id="view-search">
+        <div id="searchResults" class="stack"></div>
+      </section>
+
+      <!-- DASHBOARD -->
+      <section class="view is-active" id="view-dashboard">
+        <div class="grid grid-top" id="dashSummary"></div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Today's habits</h3><span class="muted small" id="dashHabitsRatio"></span></div>
+            <div id="dashHabits" class="stack-sm"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Today's checklist</h3><span class="muted small" id="dashChecklistRatio"></span></div>
+            <div id="dashChecklist" class="stack-sm"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3>Activity heatmap</h3>
+            <span class="muted small">last 12 weeks</span>
+          </div>
+          <div id="dashHeatmap" class="heatmap-wrap"></div>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>This week</h3></div>
+            <div id="dashWeek" class="bars"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Quick add</h3></div>
+            <div class="quick-add" id="quickAdd">
+              <button data-quick="habit">+ Habit</button>
+              <button data-quick="task">+ Task</button>
+              <button data-quick="note">+ Note</button>
+              <button data-quick="journal">+ Journal entry</button>
+              <button data-quick="goal">+ Goal</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HABITS -->
+      <section class="view" id="view-habits">
+        <div class="section-toolbar">
+          <button class="btn btn-primary" id="addHabitBtn">+ New habit</button>
+        </div>
+        <div id="habitsList" class="stack"></div>
+        <div class="card" id="habitsEmpty" hidden>
+          <div class="empty-state">
+            <p>No habits yet.</p>
+            <p class="muted small">Add a habit you want to build — it'll show up here for daily check-ins and streak tracking.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKLIST -->
+      <section class="view" id="view-checklist">
+        <div class="card">
+          <div class="card-head"><h3 id="checklistDateLabel">Today</h3><span class="muted small" id="checklistRatio"></span></div>
+          <form class="inline-form" id="checklistForm">
+            <input type="text" id="checklistInput" placeholder="Add a task for today…" autocomplete="off">
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+          <div id="checklistList" class="stack-sm"></div>
+          <div class="empty-state" id="checklistEmpty" hidden>
+            <p class="muted small">Nothing on today's list yet. Add your first task above.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALENDAR -->
+      <section class="view" id="view-calendar">
+        <div class="card">
+          <div class="cal-head">
+            <button class="icon-btn" id="calPrev" aria-label="Previous month">‹</button>
+            <h3 id="calMonthLabel"></h3>
+            <button class="icon-btn" id="calNext" aria-label="Next month">›</button>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+        <div class="card" id="calDetail">
+          <div class="card-head"><h3 id="calDetailDate">Select a day</h3></div>
+          <div id="calDetailBody" class="stack-sm muted small">Tap a date to see everything logged that day.</div>
+        </div>
+      </section>
+
+      <!-- MOOD -->
+      <section class="view" id="view-mood">
+        <div class="card">
+          <div class="card-head"><h3>How are you today?</h3></div>
+          <div class="mood-picker" id="moodPicker"></div>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Last 14 days</h3></div>
+            <div id="moodHistory" class="mood-history"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Averages</h3></div>
+            <div id="moodStats" class="stack-sm"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WELLNESS (water + sleep) -->
+      <section class="view" id="view-wellness">
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Water</h3><span class="muted small" id="waterRatio"></span></div>
+            <div class="water-tracker" id="waterTracker"></div>
+            <div class="goal-row">
+              <label for="waterGoalInput">Daily goal (glasses)</label>
+              <input type="number" id="waterGoalInput" min="1" max="20">
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Sleep</h3></div>
+            <form class="inline-form" id="sleepForm">
+              <input type="number" id="sleepInput" min="0" max="24" step="0.25" placeholder="Hours slept last night">
+              <button type="submit" class="btn btn-primary">Log</button>
+            </form>
+            <div class="goal-row">
+              <label for="sleepGoalInput">Sleep goal (hours)</label>
+              <input type="number" id="sleepGoalInput" min="1" max="14" step="0.5">
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Water — last 7 days</h3></div>
+            <div id="waterChart" class="bars"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Sleep — last 7 days</h3></div>
+            <div id="sleepChart" class="bars"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- POMODORO -->
+      <section class="view" id="view-pomodoro">
+        <div class="card pomodoro-card">
+          <div class="pomodoro-mode" id="pomodoroModeLabel">Focus</div>
+          <div class="pomodoro-ring">
+            <svg viewBox="0 0 220 220" width="220" height="220">
+              <circle cx="110" cy="110" r="100" class="ring-bg"/>
+              <circle cx="110" cy="110" r="100" class="ring-progress" id="pomodoroRing"/>
+            </svg>
+            <div class="pomodoro-time" id="pomodoroTime">25:00</div>
+          </div>
+          <div class="pomodoro-controls">
+            <button class="btn" id="pomodoroReset">Reset</button>
+            <button class="btn btn-primary btn-lg" id="pomodoroToggle">Start</button>
+            <button class="btn" id="pomodoroSkip">Skip</button>
+          </div>
+          <div class="pomodoro-settings">
+            <label>Focus <input type="number" id="focusLenInput" min="1" max="120"> min</label>
+            <label>Break <input type="number" id="breakLenInput" min="1" max="60"> min</label>
+            <label>Long break <input type="number" id="longBreakLenInput" min="1" max="90"> min</label>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Today</h3></div>
+            <div id="pomodoroTodayStats" class="stack-sm"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>This week</h3></div>
+            <div id="pomodoroWeekChart" class="bars"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTES -->
+      <section class="view" id="view-notes">
+        <div class="section-toolbar">
+          <button class="btn btn-primary" id="addNoteBtn">+ New note</button>
+        </div>
+        <div id="notesGrid" class="grid grid-cards"></div>
+        <div class="empty-state" id="notesEmpty" hidden>
+          <p class="muted small">No notes yet. Capture an idea, a link, or a to-remember.</p>
+        </div>
+      </section>
+
+      <!-- JOURNAL -->
+      <section class="view" id="view-journal">
+        <div class="card">
+          <div class="card-head"><h3 id="journalDateLabel">Today's entry</h3></div>
+          <textarea id="journalInput" rows="6" placeholder="What happened today? How did it feel?"></textarea>
+          <div class="journal-actions">
+            <span class="muted small" id="journalSavedLabel"></span>
+            <button class="btn btn-primary" id="journalSaveBtn">Save entry</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Past entries</h3></div>
+          <div id="journalList" class="stack"></div>
+          <div class="empty-state" id="journalEmpty" hidden>
+            <p class="muted small">Your past entries will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- GOALS -->
+      <section class="view" id="view-goals">
+        <div class="section-toolbar">
+          <button class="btn btn-primary" id="addGoalBtn">+ New goal</button>
+        </div>
+        <div id="goalsList" class="stack"></div>
+        <div class="empty-state" id="goalsEmpty" hidden>
+          <p class="muted small">No goals yet. Set a target and track progress toward it.</p>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="view" id="view-stats">
+        <div class="grid grid-top" id="statsSummary"></div>
+        <div class="card">
+          <div class="card-head"><h3>Full activity heatmap</h3><span class="muted small">last 26 weeks</span></div>
+          <div id="statsHeatmap" class="heatmap-wrap"></div>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Weekly completion</h3></div>
+            <div id="statsWeekly" class="bars"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Monthly completion</h3></div>
+            <div id="statsMonthly" class="bars"></div>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Habit streaks</h3></div>
+            <div id="statsStreaks" class="stack-sm"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Overview</h3></div>
+            <div id="statsOverview" class="stack-sm"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <h3 id="modalTitle">Title</h3>
+      <button class="icon-btn" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
